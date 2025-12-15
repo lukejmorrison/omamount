@@ -49,7 +49,7 @@ The script computes `uid`/`gid` from the invoking user so ownership mapping matc
 
 ```bash
 chmod +x networking/setup_nas_mounts.sh
-./networking/setup_nas_mounts.sh
+./networking/setup_nas_mounts.sh --apply
 ```
 
 ### Audit / preview (no changes)
@@ -84,7 +84,10 @@ mount | grep /mnt/nas
 
 ```bash
 sudo umount /mnt/nas/*
-sudo sed -i '/192\.168\.8\.117/d' /etc/fstab
+./networking/setup_nas_mounts.sh --uninstall
+
+# If you need to remove the managed block manually:
+sudo sed -i '/^# BEGIN OMAMOUNT$/,/^# END OMAMOUNT$/d' /etc/fstab
 sudo rm -rf /mnt/nas
 sudo rm -f /etc/samba/credentials/omarchy-nas.creds
 ```

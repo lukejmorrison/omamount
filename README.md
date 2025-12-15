@@ -31,6 +31,7 @@ cp nas_config.example.sh nas_config.local.sh
 $EDITOR nas_config.local.sh
 
 ./setup_nas_mounts.sh --doctor
+./setup_nas_mounts.sh --wizard
 ./setup_nas_mounts.sh --apply
 ```
 
