@@ -1,6 +1,15 @@
-# Networking (Omarchy)
+# omamount
 
-This folder is the maintained, “Omarchy-aligned” place for your Arch Linux networking/NAS setup: one script to provision mounts, plus documentation you can keep current as your share layout evolves.
+An opinionated, “omakase” NAS-mounting setup for Linux.
+
+Curated defaults (systemd automounts, hardened CIFS, idempotent `/etc/fstab`). You bring the NAS details. You own the outcome.
+
+## Omakase Disclaimer
+
+- Do what you want, but don’t blame me if your mounts go rogue.
+- This repo ships **no real hostnames/IPs/share names**. Put them in `nas_config.local.sh` (gitignored).
+- Credentials never belong in the repo.
+- We aim for sane defaults, not guarantees. Verify on your hardware.
 
 ## Contents
 
@@ -9,6 +18,7 @@ This folder is the maintained, “Omarchy-aligned” place for your Arch Linux n
 - `nas_config.local.example.sh` – Example per-machine override file (copy to `nas_config.local.sh`).
 - `networkingsetup.md` – High-level Omarchy guide for provisioning, verification, rollback, and troubleshooting.
 - `shares.md` – Notes on options, security posture, rollback, and troubleshooting.
+- `LICENSE` – MIT License.
 
 ## Quick Start (SMB shares)
 
@@ -24,12 +34,6 @@ $EDITOR nas_config.local.sh
 ./setup_nas_mounts.sh --apply
 ```
 
-Health check (no changes):
-
-```bash
-./setup_nas_mounts.sh --doctor
-```
-
 ## Install On A New Machine
 
 ```bash
@@ -42,7 +46,7 @@ $EDITOR nas_config.local.sh
 ./setup_nas_mounts.sh --apply
 ```
 
-After provisioning, the shares are configured as systemd automounts: they mount on first access and won’t stall boot if your NAS is offline.
+After provisioning, shares mount on first access (automount) and won’t stall boot if the NAS is offline.
 
 ## Operating Principles
 
@@ -51,3 +55,7 @@ After provisioning, the shares are configured as systemd automounts: they mount 
 - Use automounts (`x-systemd.automount`) instead of boot-time hard mounts.
 
 For maintenance conventions in this folder (how to document changes, what to avoid), see `AGENTS.md`.
+
+## License
+
+MIT. See `LICENSE`.
