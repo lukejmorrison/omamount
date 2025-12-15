@@ -1,0 +1,18 @@
+# Per-machine overrides (do not commit)
+nas_config.local.sh
+nas_config.sh
+
+# Credentials (never commit)
+*.creds
+
+# Common local secrets/config patterns (do not commit)
+*.env
+*.env.*
+*.local
+*.local.*
+
+# Editor/OS noise
+.DS_Store
+*.swp
+*.swo
+.vscode/
