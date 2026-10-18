@@ -63,3 +63,7 @@ Networking changes are usually “maintenance,” not necessarily a PLOG/customi
    - `mount | grep /mnt/nas`
    - `systemctl list-units | grep -i mnt-nas`
 4. Update `shares.md` if mount options or credential locations changed.
+
+## README
+
+- This repo is public. When a change alters anything a user can see, add or refresh a screenshot in README.md (images in docs/screenshots/, relative links). The README is the marketing.
